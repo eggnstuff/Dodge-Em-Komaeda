@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cu8lqu6blfdsa"]
+
+[ext_resource type="Script" uid="uid://d3xrnuk8ek34i" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b2qmpjshcgkch" path="res://mob.tscn" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dlt22yc5iqwnu" path="res://art/nag-background.png" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b7kn05kaiaubv" path="res://player.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c8p2dj733sr6t" path="res://hud.tscn" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://bup0xvuygftxb" path="res://art/gameover.wav" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://cp3o0njktw1n7" path="res://art/Ekoroshia_SDR2.ogg" id="6_272bh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcefb"]
+atlas = ExtResource("3_7mycd")
+
+[sub_resource type="Curve2D" id="Curve2D_7mycd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, -3)
+}
+point_count = 6
+
+[node name="Main" type="Node" unique_id=337715344]
+script = ExtResource("1_h2yge")
+mob_scene = ExtResource("2_1bvp3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=649860954]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_pcefb")
+
+[node name="Player" parent="." unique_id=161970118 instance=ExtResource("3_lquwl")]
+position = Vector2(0, -2)
+
+[node name="MobTimer" type="Timer" parent="." unique_id=107449672]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="." unique_id=796263080]
+
+[node name="StartTimer" type="Timer" parent="." unique_id=632397377]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="." unique_id=627117462]
+position = Vector2(240, 450)
+
+[node name="MobPath" type="Path2D" parent="." unique_id=533176942]
+curve = SubResource("Curve2D_7mycd")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath" unique_id=1897883938]
+position = Vector2(0, -3)
+rotation = 1.5707964
+
+[node name="HUD" parent="." unique_id=984483324 instance=ExtResource("5_7mycd")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1113888695]
+stream = ExtResource("6_272bh")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1088406545]
+stream = ExtResource("6_7mycd")
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://c8p2dj733sr6t"]
+
+[ext_resource type="Script" uid="uid://b4quhnm24k7dc" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://disbhcx5pd2ho" path="res://fonts/goodbyeDespair.ttf" id="2_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://q5f6ubv5sc6w" path="res://art/clover-pixel.png" id="3_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://3d2j67lqc2c4" path="res://art/pause.png" id="4_640wx"]
+[ext_resource type="Texture2D" uid="uid://hsfnjybpgpjm" path="res://art/nagi-die.png" id="5_a2258"]
+[ext_resource type="Texture2D" uid="uid://cucw7jmxgql38" path="res://art/mute.png" id="6_1xsix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xsix"]
+atlas = ExtResource("5_a2258")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcefb"]
+atlas = SubResource("AtlasTexture_1xsix")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hruxv"]
+atlas = ExtResource("4_640wx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2258"]
+atlas = ExtResource("6_1xsix")
+
+[node name="HUD" type="CanvasLayer" unique_id=723732210]
+process_mode = 3
+script = ExtResource("1_64ctp")
+
+[node name="HighScoreLabel" type="Label" parent="." unique_id=218391282]
+offset_left = 16.0
+offset_top = 81.0
+offset_right = 72.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+text = "HI"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1205904892]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 2.0
+offset_right = -68.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPhoto" type="TextureRect" parent="." unique_id=755760176]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.5
+offset_top = -118.5
+offset_right = 238.5
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_pcefb")
+
+[node name="Message" type="Label" parent="." unique_id=560702558]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+text = "Dodge 'Em Komaeda!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=318039112]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = -100.0
+offset_right = 96.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 50
+text = " start"
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=1771839268]
+wait_time = 2.0
+one_shot = true
+
+[node name="Clover1" type="TextureRect" parent="." unique_id=1333060320]
+offset_left = 280.0
+offset_top = 11.0
+offset_right = 349.0
+offset_bottom = 79.0
+texture = ExtResource("3_8sq4i")
+
+[node name="Clover2" type="TextureRect" parent="." unique_id=583722379]
+offset_left = 339.0
+offset_top = 11.0
+offset_right = 408.0
+offset_bottom = 79.0
+texture = ExtResource("3_8sq4i")
+
+[node name="Clover3" type="TextureRect" parent="." unique_id=561638864]
+offset_left = 401.0
+offset_top = 11.0
+offset_right = 470.0
+offset_bottom = 79.0
+texture = ExtResource("3_8sq4i")
+
+[node name="PauseButton" type="Button" parent="." unique_id=1319209474]
+offset_left = 12.0
+offset_top = 19.0
+offset_right = 37.0
+offset_bottom = 58.0
+focus_mode = 0
+icon = SubResource("AtlasTexture_hruxv")
+
+[node name="CreditsPanel" type="Panel" parent="." unique_id=2036289869]
+process_mode = 3
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -462.0
+offset_top = 423.0
+offset_right = -23.0
+offset_bottom = 607.0
+grow_horizontal = 0
+
+[node name="CreditsText" type="RichTextLabel" parent="CreditsPanel" unique_id=1424221070]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 7.0
+offset_right = 421.0
+offset_bottom = 177.0
+text = "Dodge 'Em Komaeda - CREDITS
+Base Code/Tutorial:
+https://docs.godotengine.org/en/stable/getting_started/first_2d_game/
+Music:
+\"Ekoroshia\" Danganronpa 2 OST
+Font:
+https://dafontonline.com/danganronpa-font/#fgen
+Pixel Art:
+Original Artwork by me using www.pixilart.com, @eggnstuff
+
+Made with Godot Engine (v.4.7)"
+
+[node name="InfoButton" type="Button" parent="." unique_id=642531813]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 99.0
+offset_right = -13.0
+offset_bottom = 149.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "i"
+
+[node name="InfoPanel" type="Panel" parent="InfoButton" unique_id=2050116043]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -229.0
+offset_top = 1.0
+offset_right = -54.0
+offset_bottom = 65.0
+grow_horizontal = 0
+
+[node name="InfoText" type="RichTextLabel" parent="InfoButton/InfoPanel" unique_id=166639366]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 62.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("2_8sq4i")
+text = "CONTROLS
+Move - Arrow Keys
+Pause - Space Key
+Credits - C key"
+
+[node name="DodgeFreeButton" type="Button" parent="." unique_id=555442419]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+text = "	Dodge-Free!"
+
+[node name="MuteButton" type="Button" parent="." unique_id=597947070]
+offset_left = 16.0
+offset_top = 165.0
+offset_right = 44.0
+offset_bottom = 194.0
+focus_mode = 0
+icon = SubResource("AtlasTexture_a2258")
+
+[connection signal="start_game" from="." to="." method="_on_start_game"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]

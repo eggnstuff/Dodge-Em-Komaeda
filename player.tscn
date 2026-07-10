@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b7kn05kaiaubv"]
+
+[ext_resource type="Script" uid="uid://djmddfhll0ogm" path="res://player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://kkyjjiyr58ms" path="res://art/nagito-down-0.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bo8ycf7jaef2" path="res://art/nagito-down-1.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://cwoadlg2ckeos" path="res://art/nagito-down-2.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://dbuw0hnhssjdx" path="res://art/nagito-walk-0.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b08ot56xk1kd3" path="res://art/nagito-up-0.png" id="5_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://sypg08nf48ha" path="res://art/nagito-walk-1.png" id="5_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://b7h7gianf6s18" path="res://art/nagito-up-1.png" id="6_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://bvyvc7c1p0ckq" path="res://art/nagito-up-2.png" id="7_nvl01"]
+[ext_resource type="Texture2D" uid="uid://dpx1dqjnyc7xv" path="res://art/nagito-walk-2.png" id="10_ivps1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": 1,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nvl01")
+}],
+"loop": 1,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sweqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sweqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ivps1")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b26j0"]
+radius = 11.0
+height = 84.0
+
+[node name="Player" type="Area2D" unique_id=1799156076]
+script = ExtResource("1_sweqy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1789251278]
+position = Vector2(0, -20)
+scale = Vector2(1.6816666, 1.7649999)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"walk"
+frame_progress = 0.776063
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1827739788]
+shape = SubResource("CapsuleShape2D_b26j0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit" from="." to="." method="_on_hit"]
