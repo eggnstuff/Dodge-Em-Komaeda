@@ -23,7 +23,7 @@ Pause - Space
 Credits - C key
 
 # Gameplay
-![Start Screen](images/start_screen.png)
+![Start Screen](images/starting_screen.png)
 
 ![Play Screen](images/play_screen.png)
 
