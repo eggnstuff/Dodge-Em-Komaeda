@@ -22,5 +22,14 @@ Pause - Space
 
 Credits - C key
 
+# Gameplay
+![Start Screen](images/start_screen.png)
+
+![Play Screen](images/play_screen.png)
+
+![Dodge Free](images/dodge_free.png)
+
+![Game Over](images/game_over.png)
+
 # Play
 Out on [https://eggnstuff.itch.io/dodge-em-komaeda](https://eggnstuff.itch.io/dodge-em-komaeda)
